@@ -1,0 +1,44 @@
+/* CSS for the Thank You page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.thank-you {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #333;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #DFB163;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #c4923c;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Methods</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .payment-container {
+            width: 70%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .payment-option {
+            width: 200px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .payment-option:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="payment-container">
+        <h1>Choose Payment Method</h1>
+        <div class="payment-options">
+            <div class="payment-option" onclick="redirectToOnlinePayment()">
+                <h2>Online Payment</h2>
+                <p>Pay securely online</p>
+            </div>
+            <div class="payment-option" onclick="cashOnDelivery()">
+                <h2>Cash on Delivery</h2>
+                <p>Pay when the product is delivered</p>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    function redirectToOnlinePayment() {
+
+        window.location.href = "pay.html";
+    }
+
+    function cashOnDelivery() {
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    let productNames = cartItems.map(item => item.name);
+
+    const orderData = {
+        name: "John Doe", 
+        email: "johndoe@example.com", 
+        phoneNumber: "1234567890", 
+        address: "123, Street Name, City", 
+        products: cartItems, 
+        productNames: productNames 
+    };
+
+    fetch('store_order_data.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+    })
+    .then(response => {
+
+        window.location.href = "order.html";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+</script>
+
+</body>
+
+</html>
